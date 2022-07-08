@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,8 @@ userid="UserId please"
 password="password please"
 usid=""
 pswd=""
-// DATABASE
-db:any={
-  1000:{"userid":1000,"username":"akhil kumar","password":1000},
-  1002:{"userid":1002,"username":"ajin sam","password":1002},
-  1003:{"userid":1003,"username":"Rijo Rajan","password":1003},
-  
-
-}
-  constructor(private router:Router) { }
+// dependency Injection
+  constructor(private router:Router,private ds:DataService) { }
 
   ngOnInit(): void {
   }
@@ -41,18 +35,11 @@ passwordchange(event:any){
   login(){
   var usid=this.usid
   var pswd=this.pswd
-  let db=this.db
-  if(usid in db){
-    if(pswd==db[usid]["password"]){
+  const result=this.ds.login(usid,pswd)
+
+  if(result){
       alert("login Sucessfull")
       this.router.navigateByUrl("Dashboard")
-    }
-    else{
-      alert("incorrect password")
-    }
-  }
-  else{
-    alert("user does not exisist")
   }
   }
 }

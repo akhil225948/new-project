@@ -14,6 +14,6 @@ pswd=""
   ngOnInit(): void {
   }
 register(){
-  alert("Register clicked")
+  alert("Register successfull")
 }
 }

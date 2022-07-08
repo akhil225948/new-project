@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+date=""
+description=""
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  addevent(){
+    alert("Event added")
+  }
+  viewevent(){
+    alert("Events viewing !!!")
+    this.router.navigateByUrl('eventform')
+
+    
   }
 
 }
